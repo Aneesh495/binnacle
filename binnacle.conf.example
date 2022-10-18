@@ -1,0 +1,66 @@
+# Binnacle Configuration Specification
+# Distributed MQTT 5.0 Telemetry Broker and Event Fabric
+
+# Node Identity
+node_id = "binnacle-node-01"
+cluster_name = "binnacle-fleet"
+
+# Networking and Listeners
+bind_address = "0.0.0.0"
+port = 1883
+max_connections = 65536
+backlog = 1024
+tcp_nodelay = true
+
+# WebSocket Transport
+websocket_enabled = true
+websocket_port = 8083
+
+# TLS Transport
+tls_enabled = false
+tls_port = 8883
+tls_certificate = "certs/server.crt"
+tls_private_key = "certs/server.key"
+
+# HTTP Management and Prometheus Metrics
+http_enabled = true
+http_port = 8080
+metrics_path = "/metrics"
+
+# MQTT 5 Protocol Limits
+max_packet_size = 10485760
+max_topic_alias = 128
+receive_maximum = 1024
+topic_alias_maximum = 64
+maximum_qos = 2
+retain_available = true
+wildcard_subscription_available = true
+subscription_identifiers_available = true
+shared_subscription_available = true
+server_keep_alive = 60
+
+# Session Management
+session_expiry_interval = 7200
+max_inflight_messages = 64
+max_offline_messages = 10000
+offline_queue_strategy = "drop_oldest"
+
+# Storage and Persistence
+storage_enabled = true
+storage_directory = "data/wal"
+sync_on_write = false
+segment_size_bytes = 67108864
+compaction_interval_seconds = 300
+
+# Stream Processing and Rule Engine
+rules_enabled = true
+rules_file = "rules.json"
+
+# Inter-Broker Clustering and Bridging
+cluster_enabled = false
+cluster_bind_port = 9883
+cluster_peers = ""
+
+# Logging
+log_level = "info"
+log_format = "json"
