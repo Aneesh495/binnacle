@@ -1,0 +1,37 @@
+# Build and compilation artifacts
+*.o
+*.a
+*.so
+*.dylib
+build/
+bin/
+*.dSYM/
+
+# Pike bytecode and cache files
+*.o
+*.pre
+core
+core.*
+
+# Storage and test runtime logs
+data/
+*.wal
+*.log
+*.snap
+*.pid
+
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.venv/
+env/
+
+# IDE and OS files
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*~
