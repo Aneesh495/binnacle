@@ -6,10 +6,10 @@ class BinnacleError {
     int error_code;
     int reason_code;
 
-    void create(string _msg, int _err = 1, int _rc = 0x80) {
+    void create(string _msg, int|void _err, int|void _rc) {
         message = _msg;
-        error_code = _err;
-        reason_code = _rc;
+        error_code = zero_type(_err) ? 1 : _err;
+        reason_code = zero_type(_rc) ? 0x80 : _rc;
     }
 
     string description() {
@@ -21,63 +21,63 @@ class BinnacleError {
 class ProtocolError {
     inherit BinnacleError;
 
-    void create(string _msg, int _rc = 0x82) {
-        ::create(_msg, 100, _rc);
+    void create(string _msg, int|void _rc) {
+        ::create(_msg, 100, zero_type(_rc) ? 0x82 : _rc);
     }
 }
 
 class MalformedPacketError {
     inherit BinnacleError;
 
-    void create(string _msg, int _rc = 0x81) {
-        ::create(_msg, 101, _rc);
+    void create(string _msg, int|void _rc) {
+        ::create(_msg, 101, zero_type(_rc) ? 0x81 : _rc);
     }
 }
 
 class AuthenticationError {
     inherit BinnacleError;
 
-    void create(string _msg, int _rc = 0x86) {
-        ::create(_msg, 102, _rc);
+    void create(string _msg, int|void _rc) {
+        ::create(_msg, 102, zero_type(_rc) ? 0x86 : _rc);
     }
 }
 
 class AuthorizationError {
     inherit BinnacleError;
 
-    void create(string _msg, int _rc = 0x87) {
-        ::create(_msg, 103, _rc);
+    void create(string _msg, int|void _rc) {
+        ::create(_msg, 103, zero_type(_rc) ? 0x87 : _rc);
     }
 }
 
 class QuotaExceededError {
     inherit BinnacleError;
 
-    void create(string _msg, int _rc = 0x97) {
-        ::create(_msg, 104, _rc);
+    void create(string _msg, int|void _rc) {
+        ::create(_msg, 104, zero_type(_rc) ? 0x97 : _rc);
     }
 }
 
 class TopicFilterError {
     inherit BinnacleError;
 
-    void create(string _msg, int _rc = 0x8F) {
-        ::create(_msg, 105, _rc);
+    void create(string _msg, int|void _rc) {
+        ::create(_msg, 105, zero_type(_rc) ? 0x8F : _rc);
     }
 }
 
 class StorageError {
     inherit BinnacleError;
 
-    void create(string _msg, int _rc = 0x80) {
-        ::create(_msg, 106, _rc);
+    void create(string _msg, int|void _rc) {
+        ::create(_msg, 106, zero_type(_rc) ? 0x80 : _rc);
     }
 }
 
 class ClusterError {
     inherit BinnacleError;
 
-    void create(string _msg, int _rc = 0x80) {
-        ::create(_msg, 107, _rc);
+    void create(string _msg, int|void _rc) {
+        ::create(_msg, 107, zero_type(_rc) ? 0x80 : _rc);
     }
 }
