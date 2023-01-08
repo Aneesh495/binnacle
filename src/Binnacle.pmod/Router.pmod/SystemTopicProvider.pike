@@ -3,7 +3,7 @@
 
 int start_time;
 int update_interval;
-int callout_id;
+mixed callout_id;
 object broker_ref;
 
 void create(object broker, int|void interval) {
@@ -55,7 +55,6 @@ void publish_sys_topics() {
 
     foreach (indices(sys_map), string topic) {
         string payload = sys_map[topic];
-        // Publish internally with QoS 0, retain = 1
         broker_ref->internal_publish(topic, payload, 0, 1);
     }
 }
