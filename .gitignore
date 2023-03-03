@@ -3,8 +3,8 @@
 *.a
 *.so
 *.dylib
-build/
-bin/
+/build/
+/bin/
 *.dSYM/
 
 # Pike bytecode and cache files

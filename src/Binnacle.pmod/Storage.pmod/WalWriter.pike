@@ -39,7 +39,7 @@ int append_record(int record_type, string payload_data) {
     }
 
     int seq = current_seq++;
-    object rec = .WalRecord(record_type, seq, payload_data);
+    object rec = .WalRecord.create_record(record_type, seq, payload_data);
     string encoded = rec->encode();
 
     // Check segment rollover
