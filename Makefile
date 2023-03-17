@@ -20,6 +20,11 @@ build:
 	@if [ -d "$(C_SRC_DIR)/bench" ]; then \
 		$(CC) $(CFLAGS) $(C_SRC_DIR)/bench/fast_bench.c $(C_SRC_DIR)/bench/hdr_histogram.c -o $(BIN_DIR)/binnacle-bench -lpthread; \
 	fi
+	@if [ -d "$(C_SRC_DIR)/accel" ]; then \
+		$(CC) $(CFLAGS) -c $(C_SRC_DIR)/accel/varint_accel.c -o $(BIN_DIR)/varint_accel.o; \
+		$(CC) $(CFLAGS) -c $(C_SRC_DIR)/accel/trie_accel.c -o $(BIN_DIR)/trie_accel.o; \
+		ar rcs $(BIN_DIR)/libbinnacle_accel.a $(BIN_DIR)/varint_accel.o $(BIN_DIR)/trie_accel.o; \
+	fi
 	@echo "Binnacle build complete."
 
 test:
