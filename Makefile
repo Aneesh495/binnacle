@@ -4,7 +4,7 @@
 PIKE ?= pike
 CC ?= clang
 CFLAGS ?= -O3 -Wall -Wextra -pedantic -std=c11
-MODULE_PATH := $(CURDIR)/src
+MODULE_PATH := $(CURDIR)/src -M$(CURDIR)/tests
 BIN_DIR := $(CURDIR)/bin
 SRC_DIR := $(CURDIR)/src
 C_SRC_DIR := $(CURDIR)/c_src

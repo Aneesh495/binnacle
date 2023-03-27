@@ -97,5 +97,10 @@ private mixed _resolve_val(string expr, mapping(string:mixed) ctx) {
         return ctx->topic;
     }
 
-    return .JsonPath.get_value(ctx, expr);
+    mixed val = .JsonPath.get_value(ctx, expr);
+    if (!zero_type(val) && val != 0) {
+        return val;
+    }
+
+    return expr;
 }
