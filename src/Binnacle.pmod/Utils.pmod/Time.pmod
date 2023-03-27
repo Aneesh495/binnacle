@@ -8,17 +8,17 @@ int now_seconds() {
 
 //! Return high-precision monotonic nanoseconds.
 int monotonic_ns() {
-    return gethrtime();
+    return gethrtime() * 1000;
 }
 
 //! Return high-precision monotonic microseconds.
 int monotonic_us() {
-    return (int)(gethrtime() / 1000);
+    return gethrtime();
 }
 
 //! Return high-precision monotonic milliseconds.
 int monotonic_ms() {
-    return (int)(gethrtime() / 1000000);
+    return (int)(gethrtime() / 1000);
 }
 
 //! Format epoch timestamp into ISO 8601 UTC string.

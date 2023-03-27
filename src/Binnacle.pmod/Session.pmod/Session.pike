@@ -48,7 +48,8 @@ void detach_connection() {
 }
 
 //! Check if session has expired based on Session Expiry Interval.
-int is_expired(int now) {
+int is_expired(int|void now) {
+    int current_time = zero_type(now) ? time() : now;
     Thread.MutexKey key = session_mutex->lock();
     if (is_active) {
         destruct(key);
@@ -62,7 +63,7 @@ int is_expired(int now) {
         destruct(key);
         return 0; // Never expires
     }
-    int expired = (disconnected_at > 0 && (now - disconnected_at) >= session_expiry_interval);
+    int expired = (disconnected_at > 0 && (current_time - disconnected_at) >= session_expiry_interval);
     destruct(key);
     return expired;
 }
