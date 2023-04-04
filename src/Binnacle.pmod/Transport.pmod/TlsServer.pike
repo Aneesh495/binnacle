@@ -52,8 +52,9 @@ int start() {
     return 0;
 }
 
-private void _on_accept(object port_obj) {
-    object client_sock = port_obj->accept();
+private void _on_accept(mixed|void id) {
+    if (!ssl_port) return;
+    object client_sock = ssl_port->accept();
     if (!client_sock) return;
 
     object actor = Binnacle.Engine.ConnectionActor(client_sock, broker);

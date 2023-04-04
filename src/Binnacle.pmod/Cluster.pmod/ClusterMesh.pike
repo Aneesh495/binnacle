@@ -49,8 +49,9 @@ int start(array(string)|void peers) {
     return 1;
 }
 
-private void _accept_callback(object port) {
-    object sock = port->accept();
+private void _accept_callback(mixed|void id) {
+    if (!listener) return;
+    object sock = listener->accept();
     if (!sock) return;
 
     // Incoming cluster peer connection

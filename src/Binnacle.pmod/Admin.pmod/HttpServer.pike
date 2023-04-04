@@ -41,8 +41,9 @@ int start() {
     return 1;
 }
 
-private void _on_accept(object port_obj) {
-    object sock = port_obj->accept();
+private void _on_accept(mixed|void id) {
+    if (!listener) return;
+    object sock = listener->accept();
     if (!sock) return;
 
     HttpClient(sock, api);

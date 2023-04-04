@@ -43,8 +43,9 @@ int start() {
 }
 
 //! Accept callback invoked by Pike backend on client socket connection.
-private void _on_accept(object port_obj) {
-    object client_sock = port_obj->accept();
+private void _on_accept(mixed|void id) {
+    if (!listener) return;
+    object client_sock = listener->accept();
     if (!client_sock) return;
 
     // Instantiate client connection actor

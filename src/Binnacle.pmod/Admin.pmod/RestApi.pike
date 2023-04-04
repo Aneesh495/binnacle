@@ -17,7 +17,7 @@ array(mixed) dispatch(string method, string path, mapping headers, string body) 
     }
 
     // 2. Health Endpoint
-    if (path == "/health") {
+    if (path == "/health" || path == "/api/v1/health" || path == "/api/v1/status") {
         mapping resp = ([
             "status": "ok",
             "version": Binnacle.version(),
@@ -27,7 +27,7 @@ array(mixed) dispatch(string method, string path, mapping headers, string body) 
     }
 
     // 3. Prometheus / OpenMetrics Telemetry
-    if (path == "/metrics") {
+    if (path == "/metrics" || path == "/api/v1/metrics") {
         string metrics_txt = Binnacle.Metrics.PrometheusExporter.export_openmetrics(broker, broker->metrics_registry);
         return ({ 200, "text/plain; version=0.0.4; charset=utf-8", metrics_txt });
     }
