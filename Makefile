@@ -81,7 +81,7 @@ verify: test check-dashes
 
 check-dashes:
 	@echo "Verifying zero em dashes across all files..."
-	@if grep -rn "—" src docs tests c_src python scripts Makefile README.md 2>/dev/null; then \
+	@if grep -rn --exclude=Makefile "—" src docs tests c_src python scripts README.md 2>/dev/null; then \
 		echo "ERROR: Em dashes detected! Failing verification."; \
 		exit 1; \
 	else \
